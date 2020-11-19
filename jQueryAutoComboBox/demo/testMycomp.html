@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test my Component</title>
+  <script src="../src/js/jquery-1.7.2.min.js" type="text/javascript"></script>
+  <script src="../src/jquery.autoComboBox.js" type="text/javascript"></script>
+  <link rel="stylesheet" type="text/css" href="../src/assert/autoComboBox.css" />
+  <link rel="stylesheet" type="text/css" href="../src/assert/ligerUI/skins/ligerui-icons.css" />
+  <link rel="stylesheet" type="text/css" href="../src/assert/ligerUI/skins/Aqua/css/ligerui-all.css" />
+</head>
+
+<body>
+  <div style="display:flex;min-height: 150px;width:200px;margin-left:50px;flex-direction: column;justify-content: space-around;align-items:flex-start;">
+    <form id="formtest">
+      <input id="eqiupment" type="text" />
+    </form>
+    <button onclick="getInputData()">点击查看最后选中的数据</button>
+    <div>已选择的选项：<span id="selectednames"></span></div>
+    <div>已选择的选项Ids：<span id="selectedids"></span></div>  
+  </div>
+  <script>
+    var mockDataList = [
+      { eqname: "冰箱1号", eqid: "11" },
+      { eqname: "洗衣机2号", eqid: "22" },
+      { eqname: "空调3号", eqid: "33" },
+      { eqname: "微波炉4号", eqid: "44" },
+      { eqname: "扫地机器人5号", eqid: "55" },
+      { eqname: "烤箱6号", eqid: "66" },
+      { eqname: "电磁炉7号", eqid: "77" },
+      { eqname: "油烟机8号", eqid: "88" }
+    ]
+    $(function () {
+      $("#eqiupment").AutoComboBox({
+        width: 300,
+        dataList: mockDataList,
+        nameField: "eqname",
+        valueField: "eqid",
+        hiddenValueFieldID: "equipment_ids",
+        selected: "11,22"
+      })
+    });
+    function getInputData() {
+      $("#selectednames").html($("#eqiupment").val())
+      $("#selectedids").html($("#equipment_ids").val());
+    }
+  </script>
+</body>
+
+</html>
